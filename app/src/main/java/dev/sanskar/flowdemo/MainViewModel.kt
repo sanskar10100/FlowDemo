@@ -1,10 +1,12 @@
 package dev.sanskar.flowdemo
 
 import androidx.lifecycle.*
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 // VM
 class MainViewModel : ViewModel() {
-    val response = Repository.latestResponse
+    val response = Repository
+        .latestResponse
+        .stateIn(viewModelScope, SharingStarted.Lazily, ApiResponse(""))
 }

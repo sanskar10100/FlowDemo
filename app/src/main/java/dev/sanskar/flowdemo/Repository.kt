@@ -7,9 +7,8 @@ import kotlinx.coroutines.flow.flow
 // Repository
 object Repository {
     val latestResponse: Flow<ApiResponse> = flow {
-        while (true) {
-            val response = ApiService.retrofitService.getRecords()
-            emit(response)
+        for (i in 0..10) {
+            emit(ApiResponse("Call Count: ${i + 1}"))
             delay(1000)
         }
     }
