@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.response.collect {
-                    textView.text = it.message
+                    textView.text = it
                 }
             }
         }

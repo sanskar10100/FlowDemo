@@ -9,4 +9,7 @@ class MainViewModel : ViewModel() {
     val response = Repository
         .latestResponse
         .stateIn(viewModelScope, SharingStarted.Lazily, ApiResponse(""))
+        .map {
+            it.message
+        }
 }
